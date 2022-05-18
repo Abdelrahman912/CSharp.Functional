@@ -47,6 +47,7 @@
     <Compile Include="Constructs\Validation.cs" />
     <Compile Include="Errors\Error.cs" />
     <Compile Include="Extensions\ActionExtension.cs" />
+    <Compile Include="Extensions\ErrorExtension.cs" />
     <Compile Include="Extensions\ExceptionalExtension.cs" />
     <Compile Include="Extensions\OptionExtension.cs" />
     <Compile Include="Extensions\ValidationExtension.cs" />
