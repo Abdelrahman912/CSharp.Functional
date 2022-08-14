@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CSharp.Functional.Extensions;
+using System;
 using System.Collections.Generic;
 using static CSharp.Functional.Extensions.OptionExtension;
 
@@ -22,7 +23,11 @@ namespace CSharp.Functional.Constructs
             new Option<T>(some.Value);
 
         public static implicit operator Option<T>(T value) =>
-           value == null ? None : Some(value);
+           value == null ? None : new Option<T>(Some(value).Value);
+
+        public void Match<R>(Action none, Action<T> some) =>
+            Match(none.ToFunc(), some.ToFunc());
+           
 
         public R Match<R>(Func<R> none, Func<T, R> some) =>
             _isSome == true ? some(_value) : none();
