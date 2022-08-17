@@ -2,8 +2,8 @@
 {
     public record Account
     {
-        public int AccountId { get; init; }
-        public decimal CurrentBalance { get; init; }
-        public virtual ICollection<AccountState> States { get; init; } = new HashSet<AccountState>();
+        public int AccountId { get; set; }
+        public decimal CurrentBalance { get; set; }
+        public virtual ICollection<AccountState> States { get; set; } = new HashSet<AccountState>();
     }
 }

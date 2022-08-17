@@ -3,13 +3,18 @@ using BOC.Models;
 using CSharp.Functional.Constructs;
 using CSharp.Functional.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using System.Linq;
+using CSharp.Functional.Extensions;
 using static CSharp.Functional.Extensions.OptionExtension;
 
 namespace BOC.Controllers
 {
     public class MakeTransferController : ControllerBase
     {
-        public readonly IValidator<MakeTransfer> _validator = new MakeTransferValidator();
+        private readonly IValidator<MakeTransfer> _validator = new MakeTransferValidator();
+        private readonly IRepository<Account> _accounts = new AccountRepository();
+        private readonly IRepository<AccountState> _accountStates = new AccountStateRepository();
+        private readonly ISwiftService _swiftService = new SwiftService();
 
         [HttpPost, Route("api/MakeTransfer")]
         public TransferReport MakeTransfer([FromBody] MakeTransfer transfer)
@@ -21,16 +26,26 @@ namespace BOC.Controllers
             var result = ((Option<MakeTransfer>)Some(transfer))
                  .Where(_validator.IsValid)
                  .Map(Book)
-                 .Match(()=>null , val=>val);
+                 .Match(() => null, val => val);
             return result;
         }
 
-        private TransferReport Book(MakeTransfer transfer) =>
-            new TransferReport()
+        private TransferReport Book(MakeTransfer transfer)
+        {
+            var resultTrans = from debitAcc in _accounts.Get(transfer.DebitedAccountId)
+                              from debositAcc in _accounts.Get(transfer.TransferedAccountId)
+                              from trans in debitAcc.TransferTo(debositAcc, transfer.Amount)
+                              select trans;
+           var result =  resultTrans.ForEach(transfer =>
             {
-                Transfer = transfer,
-                Status = "Success"
-            };
+                _accounts.Save(transfer.DebitedAccount);
+                _accounts.Save(transfer.TransferedAccount);
+                _accountStates.Save(transfer.DebitedAccountState);
+                _accountStates.Save(transfer.TransferedAccountState);
+            });
+            return result.Match(() => new TransferReport() { Transfer = transfer, Status = "Fail" }, _ => new TransferReport() { Transfer = transfer, Status = "Success" });
+        }
+
 
     }
 }
