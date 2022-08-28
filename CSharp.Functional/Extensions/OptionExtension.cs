@@ -56,9 +56,7 @@ namespace CSharp.Functional.Extensions
         public static IEnumerable<R> Bind<T, R>(this Option<T> option, Func<T, IEnumerable<R>> func) =>
             option.AsEnumerable().SelectMany(t => func(t));
 
-        public static IEnumerable<R> Bind<T, R>(this IEnumerable<T> list, Func<T, Option<R>> func) =>
-            list.SelectMany(item => func(item).AsEnumerable());
-
+       
         public static Option<R> Apply<T, R>(this Option<Func<T, R>> optF, Option<T> optT) =>
             optF.Match(() => None,
                        f => optT.Match<Option<R>>(

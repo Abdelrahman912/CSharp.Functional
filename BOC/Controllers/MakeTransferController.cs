@@ -3,8 +3,6 @@ using BOC.Models;
 using CSharp.Functional.Constructs;
 using CSharp.Functional.Extensions;
 using Microsoft.AspNetCore.Mvc;
-using System.Linq;
-using CSharp.Functional.Extensions;
 using static CSharp.Functional.Extensions.OptionExtension;
 
 namespace BOC.Controllers

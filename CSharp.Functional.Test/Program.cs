@@ -1,20 +1,20 @@
-﻿namespace CSharp.Functional.Test
+﻿using System.Configuration;
+using CSharp.Functional.Extensions;
+
+namespace CSharp.Functional.Test
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            var employee = new Employee()
-            {
-                Name = "Hamada",
-                Age = 25 , 
-                Status = MartialStatus.UNMARRIED,
-                Salary = 3000
-            };
-           
+           ConnectionString connString = ConfigurationManager.ConnectionStrings["CompanyXYZ"].ConnectionString;
+            SqlTemplate sel = "SELECT * FROM EMPLOYEES",
+                 sqlById = $"{sel} WHERE ID = @Id",
+                 sqlByName = $"{sel} WHERE NAME = @Name";
 
-
-            Console.WriteLine("Hello, World!");
+            var queryEmployees = connString.Query<Employee>();
+            var queryAllEmps = queryEmployees(sel, null).ToList();
+            var queryEmpsById = queryEmployees.Apply(sqlById);
         }
     }
 }
