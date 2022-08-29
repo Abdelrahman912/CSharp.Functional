@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Unit = System.ValueTuple;
 using CSharp.Functional.Constructs;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace CSharp.Functional.Extensions
 {
@@ -26,6 +27,9 @@ namespace CSharp.Functional.Extensions
         public static Option<R> Map<T, R>(this Option<T> optT, Func<T, R> f) =>
            optT.Match<Option<R>>(() => None,
                                  (t) => Some(f(t)));
+
+        public static Option<Func<T2, R>> Map<T1, T2, R>(this Option<T1> opt, Func<T1, T2, R> f) =>
+            opt.Map(f.Curry());
 
         public static Option<R> Select<T, R>(this Option<T> optT, Func<T, R> f) =>
             optT.Map(f);
@@ -64,6 +68,8 @@ namespace CSharp.Functional.Extensions
                            value => f(value)));
 
 
+        public static Option<Func<T2,R>> Apply<T1,T2, R> (this Option<Func<T1,T2,R>> optF , Option<T1>optT)=>
+            optF.Map(f=>f.Curry()).Apply(optT);
        
 
     }

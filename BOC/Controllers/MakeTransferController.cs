@@ -3,7 +3,9 @@ using BOC.Models;
 using CSharp.Functional.Constructs;
 using CSharp.Functional.Extensions;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 using static CSharp.Functional.Extensions.OptionExtension;
+using static CSharp.Functional.Functional;
 
 namespace BOC.Controllers
 {
@@ -13,6 +15,12 @@ namespace BOC.Controllers
         private readonly IRepository<Account> _accounts = new AccountRepository();
         private readonly IRepository<AccountState> _accountStates = new AccountStateRepository();
         private readonly ISwiftService _swiftService = new SwiftService();
+        private readonly Validator<Account> _validate;
+
+        public MakeTransferController(Validator<Account> validate)
+        {
+            _validate = validate;
+        }
 
         [HttpPost, Route("api/MakeTransfer")]
         public TransferReport MakeTransfer([FromBody] MakeTransfer transfer)
