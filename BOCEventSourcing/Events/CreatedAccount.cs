@@ -1,4 +1,4 @@
-﻿namespace BOCEventSourcing.Events
+﻿namespace BOC.Core.Events
 {
     public sealed record CreatedAccount:Event
     {

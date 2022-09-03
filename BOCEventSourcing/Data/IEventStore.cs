@@ -1,6 +1,6 @@
-﻿using BOCEventSourcing.Events;
+﻿using BOC.Core.Events;
 
-namespace BOCEventSourcing.Data
+namespace BOC.Core.Data
 {
     public interface IEventStore
     {

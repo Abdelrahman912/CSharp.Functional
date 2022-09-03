@@ -1,12 +1,12 @@
-﻿using BOCEventSourcing.Events;
+﻿using BOC.Core.Events;
 
-namespace BOCEventSourcing.Data
+namespace BOC.Core.Data
 {
     public class InMemoryEventStore : IEventStore
     {
         private readonly List<Event> _store = new List<Event>();
         public IEnumerable<Event> GetEvents(Guid id) =>
-           _store.Where(e => e.Id.Equals(id)).OrderBy(e => e.Timestamp);
+           _store.Where(e => e.EntityId.Equals(id)).OrderBy(e => e.Timestamp);
 
         public void Persist(Event e) =>
             _store.Add(e);

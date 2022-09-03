@@ -1,8 +1,8 @@
-﻿namespace BOCEventSourcing.Events
+﻿namespace BOC.Core.Events
 {
     public abstract record Event
     {
-        public Guid Id { get; init; }
+        public Guid EntityId { get; init; }
         public DateTime Timestamp { get; init; }
     }
 }

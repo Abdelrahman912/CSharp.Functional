@@ -1,4 +1,4 @@
-﻿namespace BOCEventSourcing
+﻿namespace BOC.Core
 {
     public struct CurrencyCode
     {

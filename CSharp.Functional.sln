@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BOC", "BOC\BOC.csproj", "{C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chapter09", "Chapter09\Chapter09.csproj", "{6105EFCC-1580-42BF-999E-3B82B9044E0D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BOCEventSourcing", "BOCEventSourcing\BOCEventSourcing.csproj", "{81206A98-7175-4288-BDB8-F9C7CF7079EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BOC.Core", "BOCEventSourcing\BOC.Core.csproj", "{81206A98-7175-4288-BDB8-F9C7CF7079EE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

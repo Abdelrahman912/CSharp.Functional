@@ -1,9 +1,9 @@
-﻿using BOCEventSourcing.Domain;
-using BOCEventSourcing.Enums;
-using BOCEventSourcing.Events;
+﻿using BOC.Core.Domain;
+using BOC.Core.Enums;
+using BOC.Core.Events;
 using CSharp.Functional.Constructs;
 
-namespace BOCEventSourcing.Extensions
+namespace BOC.Core.Extensions
 {
     public static class AccountStateExtension
     {
