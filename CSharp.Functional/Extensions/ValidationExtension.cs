@@ -2,6 +2,7 @@
 using CSharp.Functional.Errors;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Unit = System.ValueTuple;
 
 namespace CSharp.Functional.Extensions
@@ -41,6 +42,13 @@ namespace CSharp.Functional.Extensions
         public static Validation<RR> SelectMany<T, R, RR>(this Validation<T> validation, Func<T, Validation<R>> bind, Func<T, R, RR> project) =>
            validation.Match(errors => Invalid(errors),
                             t => bind(t).Match<Validation<RR>>(errs => Invalid(errs),r=> project(t,r)));
+
+        public static Validation<R> Apply<T, R>(this Validation<Func<T, R>> valF, Validation<T> valT) =>
+            valF.Match(
+                valid: (f) => valT.Match(valid: (t) => Valid(f(t)),
+                    invalid: errs => Invalid(errs)),
+                invalid: errF => valT.Match(valid: (t) => Invalid(errF),
+                    invalid: errT => Invalid(errF.Concat(errT))));
 
     }
 }
