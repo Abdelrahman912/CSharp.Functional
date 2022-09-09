@@ -35,6 +35,12 @@ namespace CSharp.Functional.Extensions
          validation.Match(errors => Invalid(errors),
                           data => Valid(action.ToFunc().Invoke(data)));
 
+        public static Validation<T> Do<T>(this Validation<T> val,Action<T> action)
+        {
+            val.ForEach(action);
+            return val;
+        }
+
         public static Validation<R> Bind<T, R>(this Validation<T> validation, Func<T, Validation<R>> f) =>
            validation.Match(errors => Invalid(errors),
                             data => f(data));

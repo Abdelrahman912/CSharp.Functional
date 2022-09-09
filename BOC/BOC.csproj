@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\BOCEventSourcing\BOC.Core.csproj" />
     <ProjectReference Include="..\CSharp.Functional\CSharp.Functional.csproj" />
   </ItemGroup>
 

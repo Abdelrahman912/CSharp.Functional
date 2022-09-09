@@ -1,3 +1,4 @@
+using BOC.Core.Data.SqlEventStore;
 using Microsoft.AspNetCore.Mvc.Controllers;
 
 namespace BOC
@@ -7,14 +8,13 @@ namespace BOC
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
             // Add services to the container.
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            var ctrlActivator = new ControllerActivator();
+            var ctrlActivator = new ControllerActivator(new SqlEventStore());
             builder.Services.AddSingleton<IControllerActivator>(ctrlActivator);
             builder.Services.AddSingleton<ControllerActivator>(ctrlActivator);
             var app = builder.Build();
