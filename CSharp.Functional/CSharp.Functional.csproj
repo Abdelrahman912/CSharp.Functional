@@ -49,11 +49,14 @@
     <Compile Include="Errors\Error.cs" />
     <Compile Include="Errors\GenericError.cs" />
     <Compile Include="Extensions\ActionExtension.cs" />
+    <Compile Include="Extensions\DictionaryExtension.cs" />
     <Compile Include="Extensions\EnumerableExtension.cs" />
     <Compile Include="Extensions\ErrorExtension.cs" />
     <Compile Include="Extensions\ExceptionalExtension.cs" />
     <Compile Include="Extensions\FuncExtension.cs" />
+    <Compile Include="Extensions\MiddlewareExtension.cs" />
     <Compile Include="Extensions\OptionExtension.cs" />
+    <Compile Include="Extensions\TryExtension.cs" />
     <Compile Include="Extensions\ValidationExtension.cs" />
     <Compile Include="Functional.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

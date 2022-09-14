@@ -19,6 +19,10 @@ namespace CSharp.Functional
 
         public static Unit Unit() => default(Unit);
 
+        public delegate Exceptional<T> Try<T>();
+
+        //(T -> R) -> R
+        public delegate dynamic Middleware<T>(Func<T, dynamic> cont);
 
         public static Validator<T> FailFast<T>(IEnumerable<Validator<T>> validators) =>
             (t) => validators.Aggregate(Valid(t), (acc, validator) => acc.Bind(_ => validator(t)));

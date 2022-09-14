@@ -70,7 +70,20 @@ namespace CSharp.Functional.Extensions
 
         public static Option<Func<T2,R>> Apply<T1,T2, R> (this Option<Func<T1,T2,R>> optF , Option<T1>optT)=>
             optF.Map(f=>f.Curry()).Apply(optT);
-       
+
+
+        public static Option<T> OrElse<T>(this Option<T> left, Option<T> right) =>
+            left.Match(() => right, (_) => left);
+
+        public static Option<T> OrElse<T>(this Option<T> left, Func<Option<T>> right) =>
+            left.Match(() => right(), (_) => left);
+
+
+        public static Option<T> GetOrElse<T>(this Option<T> opt, T defaultValue) =>
+            opt.Match(() => defaultValue, v => v);
+
+        public static Option<T> GetOrElse<T>(this Option<T> opt , Func<T> fallback)=>
+            opt.Match(()=>fallback(),v=>v);
 
     }
 }

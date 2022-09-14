@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chapter09", "Chapter09\Chap
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BOC.Core", "BOCEventSourcing\BOC.Core.csproj", "{81206A98-7175-4288-BDB8-F9C7CF7079EE}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chapter11", "Chapter11\Chapter11.csproj", "{AAC56D2C-3F4D-46B5-9DF2-5237E482BA0A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{81206A98-7175-4288-BDB8-F9C7CF7079EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81206A98-7175-4288-BDB8-F9C7CF7079EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81206A98-7175-4288-BDB8-F9C7CF7079EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AAC56D2C-3F4D-46B5-9DF2-5237E482BA0A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AAC56D2C-3F4D-46B5-9DF2-5237E482BA0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AAC56D2C-3F4D-46B5-9DF2-5237E482BA0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AAC56D2C-3F4D-46B5-9DF2-5237E482BA0A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
