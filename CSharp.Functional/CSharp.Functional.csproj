@@ -54,6 +54,7 @@
     <Compile Include="Extensions\ErrorExtension.cs" />
     <Compile Include="Extensions\ExceptionalExtension.cs" />
     <Compile Include="Extensions\FuncExtension.cs" />
+    <Compile Include="Extensions\GeneratorExtension.cs" />
     <Compile Include="Extensions\MiddlewareExtension.cs" />
     <Compile Include="Extensions\OptionExtension.cs" />
     <Compile Include="Extensions\TryExtension.cs" />

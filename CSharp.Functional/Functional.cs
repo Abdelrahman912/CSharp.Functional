@@ -24,6 +24,8 @@ namespace CSharp.Functional
         //(T -> R) -> R
         public delegate dynamic Middleware<T>(Func<T, dynamic> cont);
 
+        public delegate (T Value, int seed) Generator<T>(int seed);
+
         public static Validator<T> FailFast<T>(IEnumerable<Validator<T>> validators) =>
             (t) => validators.Aggregate(Valid(t), (acc, validator) => acc.Bind(_ => validator(t)));
 
