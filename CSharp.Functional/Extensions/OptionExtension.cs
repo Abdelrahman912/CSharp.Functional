@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Unit = System.ValueTuple;
 using CSharp.Functional.Constructs;
 using System.Runtime.InteropServices.ComTypes;
+using CSharp.Functional.Errors;
+using static CSharp.Functional.Extensions.ValidationExtension;
 
 namespace CSharp.Functional.Extensions
 {
@@ -85,5 +87,15 @@ namespace CSharp.Functional.Extensions
         public static Option<T> GetOrElse<T>(this Option<T> opt , Func<T> fallback)=>
             opt.Match(()=>fallback(),v=>v);
 
+        public static Validation<T> ToValidation<T>(this Option<T> opt, Func<Error> error) =>
+            opt.Match(
+                () => Invalid(error()),
+                (t) => Valid(t));
+
+
+        public static Task<Option<R>> TraverseBind<T, R>(this Option<T> opt, Func<T, Task<Option<R>>> func) =>
+            opt.Match(
+                    none: () => ((Option<R>)None).Async(),
+                    some: (t) => func(t));
     }
 }

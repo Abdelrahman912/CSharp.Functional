@@ -30,14 +30,10 @@ namespace CSharp.Functional
             (t) => validators.Aggregate(Valid(t), (acc, validator) => acc.Bind(_ => validator(t)));
 
         public static Validator<T> HarvestErrors<T>(IEnumerable<Validator<T>> validators) =>
-            (t) =>
-            {
-                var errors = validators.Select(validate => validate(t))
-                                       .Bind(v => v.Match(
-                                           invalid: errs => Some(errs),
-                                           valid: _ => (Option<IEnumerable<Error>>)None)).ToList();
-                return errors.Count == 0 ? Valid(t) : Invalid(errors.Flatten());
-            };
+            (t) => validators
+                        .TraverseHarvest(validator => validator(t))
+                        .Map(_ => t);
+
 
         public static Validation<List<T>> PopOutValidation<T>(this List<Validation<T>> validations)
         {

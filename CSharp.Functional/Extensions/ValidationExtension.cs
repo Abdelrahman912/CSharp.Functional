@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unit = System.ValueTuple;
+using static CSharp.Functional.Extensions.ExceptionalExtension;
+using System.Threading.Tasks;
 
 namespace CSharp.Functional.Extensions
 {
@@ -55,6 +57,19 @@ namespace CSharp.Functional.Extensions
                     invalid: errs => Invalid(errs)),
                 invalid: errF => valT.Match(valid: (t) => Invalid(errF),
                     invalid: errT => Invalid(errF.Concat(errT))));
+
+        public static Validation<Func<T2, R>> Apply<T1, T2, R>(this Validation<Func<T1, T2, R>> validF, Validation<T1> validT) =>
+            Apply(validF.Map(f => f.Curry()), validT);
+
+        public static Exceptional<Validation<R>> Traverse<T, R>(this Validation<T> validT, Func<T, Exceptional<R>> f)
+            => validT.Match(
+                invalid: errs => Exceptional((Validation<R>)Invalid(errs)),
+                valid: t =>f(t).Map(r=> Valid(r)));
+
+        public static Task<Validation<R>> TraverseBind<T, R>(this Validation<T> valid, Func<T, Task<Validation<R>>> func) =>
+           valid.Match(
+                   invalid: errs => Invalid<R>(errs).Async(),
+                   valid: t => func(t));
 
     }
 }

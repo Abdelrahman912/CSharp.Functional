@@ -15,7 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BOC.Core", "BOCEventSourcin
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chapter11", "Chapter11\Chapter11.csproj", "{AAC56D2C-3F4D-46B5-9DF2-5237E482BA0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter12", "Chapter12\Chapter12.csproj", "{0F821FF8-337A-41FB-8C1E-33A2F0F463BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chapter12", "Chapter12\Chapter12.csproj", "{0F821FF8-337A-41FB-8C1E-33A2F0F463BD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Chapter13", "Chapter13\Chapter13.csproj", "{C6784FAB-5AD3-4012-A340-B036238CC3B4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chapter13.Traversables", "Chapter13.Traversables\Chapter13.Traversables.csproj", "{6A724CA8-A5A2-4790-BEA8-70C4560FB914}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -51,6 +55,14 @@ Global
 		{0F821FF8-337A-41FB-8C1E-33A2F0F463BD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F821FF8-337A-41FB-8C1E-33A2F0F463BD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F821FF8-337A-41FB-8C1E-33A2F0F463BD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C6784FAB-5AD3-4012-A340-B036238CC3B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6784FAB-5AD3-4012-A340-B036238CC3B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6784FAB-5AD3-4012-A340-B036238CC3B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6784FAB-5AD3-4012-A340-B036238CC3B4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A724CA8-A5A2-4790-BEA8-70C4560FB914}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A724CA8-A5A2-4790-BEA8-70C4560FB914}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A724CA8-A5A2-4790-BEA8-70C4560FB914}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A724CA8-A5A2-4790-BEA8-70C4560FB914}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

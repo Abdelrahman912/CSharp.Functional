@@ -57,6 +57,7 @@
     <Compile Include="Extensions\GeneratorExtension.cs" />
     <Compile Include="Extensions\MiddlewareExtension.cs" />
     <Compile Include="Extensions\OptionExtension.cs" />
+    <Compile Include="Extensions\TaskExtension.cs" />
     <Compile Include="Extensions\TryExtension.cs" />
     <Compile Include="Extensions\ValidationExtension.cs" />
     <Compile Include="Functional.cs" />

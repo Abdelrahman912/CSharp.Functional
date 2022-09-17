@@ -32,7 +32,7 @@ namespace Chapter11.Controllers
             from uri in CreateUri(uriAsString)
             select uri;
 
-        public Uri GetUri([FromBody] string obj)
+        public Try<Uri> GetUri([FromBody] string obj)
         {
             //var result = Parse(obj)
             //     .Bind(jobj => CreateUri((string)jobj["uri"]))
